@@ -19,6 +19,8 @@ python -m flask --app hello run
 Open http://localhost:5000. For PowerShell, activate with
 `.\.venv\Scripts\Activate.ps1` instead.
 
+The Home form stores the submitted name in the session.
+
 ## Required screenshots
 
 Activity 1.3: navigation bar, greeting, and local timestamp in `LLLL` format.

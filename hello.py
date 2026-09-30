@@ -1,22 +1,32 @@
-"""Chapter 3: Bootstrap templates and browser-local timestamps."""
+"""Chapter 4: validated forms with redirects and user sessions."""
 
 from datetime import datetime, timezone
+import os
+import secrets
 
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, session, url_for
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 
+from forms import NameForm
+
 app = Flask(__name__)
 app.config["BOOTSTRAP_SERVE_LOCAL"] = True
+app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
+app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 bootstrap = Bootstrap(app)
 moment = Moment(app)
 
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-    """Render the greeting and current UTC time for browser-local formatting."""
+    """Validate a name, save it in the session, and redirect after a POST."""
+    form = NameForm()
+    if form.validate_on_submit():
+        session["name"] = form.name.data
+        return redirect(url_for("index"))
     return render_template(
-        "index.html", name="Aidan", current_time=datetime.now(timezone.utc)
+        "index.html", form=form, name=session.get("name")
     )
 
 
@@ -24,7 +34,7 @@ def index():
 def user(name):
     """Render a personalized greeting using Jinja's automatic HTML escaping."""
     return render_template(
-        "index.html", name=name, current_time=datetime.now(timezone.utc)
+        "user.html", name=name, current_time=datetime.now(timezone.utc)
     )
 
 
