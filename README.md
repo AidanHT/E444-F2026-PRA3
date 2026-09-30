@@ -28,6 +28,8 @@ The Docker activities use the `PRA3_2` branch.
 
 Start Docker Desktop with Linux containers enabled. Check it with `docker version`.
 
+The greeting includes "Welcome to PRA3 Docker!".
+
 ## Required screenshots
 
 Activity 1.3: navigation bar, greeting, and local timestamp in `LLLL` format.
