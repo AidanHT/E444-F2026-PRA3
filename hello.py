@@ -20,15 +20,19 @@ moment = Moment(app)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    """Validate a name, save it in the session, and redirect after a POST."""
+    """Save a valid name and UofT email, then redirect after a POST."""
     form = NameForm()
     if form.validate_on_submit():
-        old_name = session.get("name")
-        if old_name is not None and old_name != form.name.data:
+        if session.get("name") and session["name"] != form.name.data:
             flash("Looks like you have changed your name!")
+        if session.get("email") and session["email"] != form.email.data:
+            flash("Looks like you have changed your email!")
         session["name"] = form.name.data
+        session["email"] = form.email.data
         return redirect(url_for("index"))
-    return render_template("index.html", form=form, name=session.get("name"))
+    return render_template(
+        "index.html", form=form, name=session.get("name"), email=session.get("email")
+    )
 
 
 @app.route("/user/<name>")

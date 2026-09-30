@@ -21,9 +21,15 @@ Open http://localhost:5000. For PowerShell, activate with
 
 The Home form stores the submitted name in the session.
 Changing the name shows a flashed message.
+The email field accepts a valid address containing `utoronto` and displays
+an error for other addresses.
 
 ## Required screenshots
 
 Activity 1.3: navigation bar, greeting, and local timestamp in `LLLL` format.
 
 ![Activity 1.3](docs/screenshots/1.3-greeting.png)
+
+Activity 1.4: first and last name with a non-UofT email.
+
+![Activity 1.4](docs/screenshots/1.4-non-uoft-email.png)
