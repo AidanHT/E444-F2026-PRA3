@@ -13,8 +13,8 @@ Use Python 3.13. From this folder in Windows Command Prompt:
 python -m venv .venv
 .venv\Scripts\activate
 python -m pip install -r requirements.txt
-python -c "import flask; print(flask.Flask)"
+python -m flask --app hello run
 ```
 
-For PowerShell, activate with
+Open http://localhost:5000. For PowerShell, activate with
 `.\.venv\Scripts\Activate.ps1` instead.
