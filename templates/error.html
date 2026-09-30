@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Please try again</h1>
+</div>
+<p>{{ message }}</p>
+<a href="{{ url_for('index') }}" class="btn btn-default">Return to Home</a>
+{% endblock %}
