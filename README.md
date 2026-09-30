@@ -20,6 +20,7 @@ Open http://localhost:5000. For PowerShell, activate with
 `.\.venv\Scripts\Activate.ps1` instead.
 
 The Home form stores the submitted name in the session.
+Changing the name shows a flashed message.
 
 ## Required screenshots
 

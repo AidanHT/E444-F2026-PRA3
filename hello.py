@@ -1,10 +1,10 @@
 """Chapter 4: validated forms with redirects and user sessions."""
 
-from datetime import datetime, timezone
 import os
 import secrets
+from datetime import UTC, datetime
 
-from flask import Flask, redirect, render_template, session, url_for
+from flask import Flask, flash, redirect, render_template, session, url_for
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 
@@ -23,19 +23,18 @@ def index():
     """Validate a name, save it in the session, and redirect after a POST."""
     form = NameForm()
     if form.validate_on_submit():
+        old_name = session.get("name")
+        if old_name is not None and old_name != form.name.data:
+            flash("Looks like you have changed your name!")
         session["name"] = form.name.data
         return redirect(url_for("index"))
-    return render_template(
-        "index.html", form=form, name=session.get("name")
-    )
+    return render_template("index.html", form=form, name=session.get("name"))
 
 
 @app.route("/user/<name>")
 def user(name):
     """Render a personalized greeting using Jinja's automatic HTML escaping."""
-    return render_template(
-        "user.html", name=name, current_time=datetime.now(timezone.utc)
-    )
+    return render_template("user.html", name=name, current_time=datetime.now(UTC))
 
 
 if __name__ == "__main__":
