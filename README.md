@@ -26,6 +26,8 @@ an error for other addresses.
 
 The Docker activities use the `PRA3_2` branch.
 
+Start Docker Desktop with Linux containers enabled. Check it with `docker version`.
+
 ## Required screenshots
 
 Activity 1.3: navigation bar, greeting, and local timestamp in `LLLL` format.
