@@ -24,6 +24,8 @@ Changing the name shows a flashed message.
 The email field accepts a valid address containing `utoronto` and displays
 an error for other addresses.
 
+The Docker activities use the `PRA3_2` branch.
+
 ## Required screenshots
 
 Activity 1.3: navigation bar, greeting, and local timestamp in `LLLL` format.
