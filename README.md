@@ -30,6 +30,21 @@ Start Docker Desktop with Linux containers enabled. Check it with `docker versio
 
 The greeting includes "Welcome to PRA3 Docker!".
 
+## Run with Docker
+
+Start Docker Desktop with Linux containers enabled, then run:
+
+```bat
+docker build -t e444-pra3 .
+docker run -d --name e444-pra3 -p 127.0.0.1:5000:5000 e444-pra3
+docker ps -a
+docker logs e444-pra3
+```
+
+Open http://localhost:5000. Stop the container with `docker stop e444-pra3`.
+To run it again, use `docker start e444-pra3`.
+
+
 ## Required screenshots
 
 Activity 1.3: navigation bar, greeting, and local timestamp in `LLLL` format.
