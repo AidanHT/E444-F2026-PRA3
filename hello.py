@@ -95,6 +95,15 @@ def csrf_error(_error):
     return render_template("error.html", message=message), 400
 
 
+@app.errorhandler(413)
+def request_too_large(_error):
+    """Keep oversized chat errors compatible with the JSON client."""
+    message = "The request is too large. Please send less text."
+    if request.endpoint == "chat":
+        return {"error": message}, 413
+    return render_template("error.html", message=message), 413
+
+
 @app.after_request
 def prevent_session_page_caching(response):
     """Keep pages with session data out of the browser's response cache."""

@@ -37,9 +37,16 @@
                 },
                 body: JSON.stringify({ message }),
             });
-            const data = await response.json();
+            const data = await response.json().catch(() => null);
+            if (!data || (response.ok && typeof data.reply !== "string")) {
+                throw new Error("The server returned an invalid response. Please try again.");
+            }
             if (!response.ok) {
-                throw new Error(data.error || "The message could not be sent.");
+                throw new Error(
+                    typeof data.error === "string"
+                        ? data.error
+                        : "The message could not be sent. Please try again."
+                );
             }
             appendMessage("Bot", data.reply);
             input.value = "";
