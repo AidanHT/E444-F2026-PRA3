@@ -6,3 +6,10 @@ __pycache__/
 .ruff_cache/
 test-results/
 .lab-work/
+tests/
+requirements-dev.txt
+pyproject.toml
+docs/evidence/
+docs/screenshots/*
+!docs/screenshots/1.3-greeting.png
+!docs/screenshots/1.4-non-uoft-email.png
