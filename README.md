@@ -5,6 +5,10 @@ Aidan Tran
 This repo is a clone of https://github.com/miguelgrinberg/flasky.
 The textbook examples use the author's [first-edition code](https://github.com/miguelgrinberg/flasky-first-edition).
 
+`main` contains the Flask activities. `PRA3_2` contains the Docker app and chatbot.
+Each activity has a separate commit and an `activity-*` tag. The textbook examples
+also have `example-2-1`, `example-2-2`, and `example-4-7` tags.
+
 ## Run locally
 
 Use Python 3.13. From this folder in Windows Command Prompt:
@@ -19,17 +23,6 @@ python -m flask --app hello run
 Open http://localhost:5000. For PowerShell, activate with
 `.\.venv\Scripts\Activate.ps1` instead.
 
-The Home form stores the submitted name in the session.
-Changing the name shows a flashed message.
-The email field accepts a valid address containing `utoronto` and displays
-an error for other addresses.
-
-The Docker activities use the `PRA3_2` branch.
-
-Start Docker Desktop with Linux containers enabled. Check it with `docker version`.
-
-The greeting includes "Welcome to PRA3 Docker!".
-
 ## Run with Docker
 
 Start Docker Desktop with Linux containers enabled, then run:
@@ -43,7 +36,6 @@ docker logs e444-pra3
 
 Open http://localhost:5000. Stop the container with `docker stop e444-pra3`.
 To run it again, use `docker start e444-pra3`.
-
 
 ## Chatbot
 
